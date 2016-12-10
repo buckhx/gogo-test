@@ -1,12 +1,11 @@
 package gogotest_test
 
 import (
-	"encoding/json"
-	"fmt"
 	"testing"
 
 	gogo "github.com/buckhx/gogo-test/gen/gogo"
-	"github.com/gogo/protobuf/proto"
+	//"github.com/gogo/protobuf/proto"
+	"github.com/golang/protobuf/proto"
 	//golang "github.com/buckhx/gogo-test/gen/golang"
 )
 
@@ -32,8 +31,7 @@ func TestGogoRoundTrip(t *testing.T) {
 		} else {
 			in.Entity = &gogo.Subject_Application{&gogo.Application{Name: test.name, Url: test.url}}
 		}
-		str, _ := json.Marshal(in)
-		fmt.Println(string(str))
+		t.Log(in)
 		buf, err := proto.Marshal(in)
 		if err != nil {
 			t.Error(err)
@@ -42,8 +40,7 @@ func TestGogoRoundTrip(t *testing.T) {
 		if err := proto.Unmarshal(buf, out); err != nil {
 			t.Error(err)
 		}
-		str, _ = json.Marshal(out)
-		fmt.Println(string(str))
+		t.Log(out)
 		switch {
 		case test.name != out.Label:
 			t.Errorf("Subject.Label didn't match")

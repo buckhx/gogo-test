@@ -65,6 +65,13 @@ func (m *Subject) GetEntity() isSubject_Entity {
 	return nil
 }
 
+func (m *Subject) GetLabel() string {
+	if m != nil {
+		return m.Label
+	}
+	return ""
+}
+
 func (m *Subject) GetContact() *Subject_Contact {
 	if m != nil {
 		return m.Contact
@@ -170,6 +177,20 @@ func (m *Subject_Contact) String() string            { return proto.CompactTextS
 func (*Subject_Contact) ProtoMessage()               {}
 func (*Subject_Contact) Descriptor() ([]byte, []int) { return fileDescriptorTest, []int{0, 0} }
 
+func (m *Subject_Contact) GetEmail() string {
+	if m != nil {
+		return m.Email
+	}
+	return ""
+}
+
+func (m *Subject_Contact) GetPhoneNumber() string {
+	if m != nil {
+		return m.PhoneNumber
+	}
+	return ""
+}
+
 type Person struct {
 	Name *Person_Name `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 }
@@ -200,6 +221,48 @@ func (m *Person_Name) String() string            { return proto.CompactTextStrin
 func (*Person_Name) ProtoMessage()               {}
 func (*Person_Name) Descriptor() ([]byte, []int) { return fileDescriptorTest, []int{1, 0} }
 
+func (m *Person_Name) GetFirst() string {
+	if m != nil {
+		return m.First
+	}
+	return ""
+}
+
+func (m *Person_Name) GetLast() string {
+	if m != nil {
+		return m.Last
+	}
+	return ""
+}
+
+func (m *Person_Name) GetMiddle() string {
+	if m != nil {
+		return m.Middle
+	}
+	return ""
+}
+
+func (m *Person_Name) GetTitle() string {
+	if m != nil {
+		return m.Title
+	}
+	return ""
+}
+
+func (m *Person_Name) GetSuffix() string {
+	if m != nil {
+		return m.Suffix
+	}
+	return ""
+}
+
+func (m *Person_Name) GetPreffered() string {
+	if m != nil {
+		return m.Preffered
+	}
+	return ""
+}
+
 type Application struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Url  string `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
@@ -209,6 +272,20 @@ func (m *Application) Reset()                    { *m = Application{} }
 func (m *Application) String() string            { return proto.CompactTextString(m) }
 func (*Application) ProtoMessage()               {}
 func (*Application) Descriptor() ([]byte, []int) { return fileDescriptorTest, []int{2} }
+
+func (m *Application) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Application) GetUrl() string {
+	if m != nil {
+		return m.Url
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*Subject)(nil), "gogotest.Subject")
