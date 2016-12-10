@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package gogotest;
+
+message Subject {
+	string label = 3;
+	Contact contact = 4;
+	oneof entity {
+		Person person = 8;
+		Application application = 9;
+	}
+
+	message Contact {
+		string email = 1;
+		string phone_number = 2;
+	}
+}
+
+message Person {
+	Name name = 1;
+
+	message Name {
+		string first = 1;  
+		string last = 2;  
+		string middle = 3;
+		string title = 4;
+		string suffix = 5;
+		string preffered = 6;
+	}
+}
+
+message Application {
+	string name = 1;
+	string url = 2;
+}
